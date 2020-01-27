@@ -1,0 +1,114 @@
+.keret{
+  float:left;
+  width:100%;
+}
+.navigacio{
+    float: left;
+    width: 100%;
+    text-align: center;
+      background-color: #5D0E13;
+
+}
+.navigacio ul{
+    margin: 0;
+    padding: 0;
+    float: none;
+    width: auto;
+    list-style: none;
+    display: inline-block;
+}
+.navigacio ul li{
+    float: left;
+    width: auto;
+    margin-right: 60px;
+    position: relative;
+    
+}
+.navigacio ul li:last-child{
+    margin: 0;
+}
+.navigacio ul li a{
+    float: left;
+    width: 100%;
+    color: white;
+    padding: 16px 0;
+    font-size: 16px;
+    line-height: normal;
+    text-decoration:none;
+    box-sizing:border-box;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;      
+    -webkit-transition:color 0.3s ease;
+    transition:color 0.3s ease;
+}
+.navigacio .almenu {
+    position: absolute;
+    top: 100%;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    min-width: 240px;
+    background-color: #fff;
+    border: solid 1px #dbdbdb;
+    opacity: 0;
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+    transition: opacity 0.3s, -webkit-transform 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+}
+.navigacio ul li .almenu  {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(-75deg);
+    transform: rotateX(-75deg);
+    visibility: hidden;
+}
+.navigacio ul li:hover > .almenu  {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 1;
+    visibility: visible;
+}
+.navigacio ul li .almenu .almenu{
+	left: 100%;
+	top: 0;
+}
+.navigacio ul li.utolso .almenu{
+	right: 0;
+	left: auto;
+}
+.navigacio ul li.utolso .almenu .almenu{
+	right: 100%;
+	left: auto;
+}
+.navigacio ul li .almenu li{
+	float: left;
+	width: 100%;
+  margin:0;
+}
+.navigacio ul li .almenu  a {  
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 11px;
+    color: #333;
+    text-align: left;
+    line-height: 1.5em;
+    padding: 16px 30px;
+    letter-spacing: normal;
+    border-bottom: 1px solid #dbdbdb;
+    -webkit-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+.navigacio ul li .almenu  a:hover{
+	color: #fff;
+  background-color:#5D0E13;
+}
+.navigacio ul li a:hover{
+  color:goldenrod;
+
+}

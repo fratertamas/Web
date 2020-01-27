@@ -1,0 +1,25 @@
+td{
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+}
+img{
+    width:100px;
+    height: 100px;
+}
+.fokeret{
+    width:80%; 
+    margin: auto;
+}
+.bal{
+   float: left; 
+   text-align: center 
+}
+.jobb{
+    float:left; 
+    padding-left: 10px;
+}
+.jobbbetu{
+    vertical-align: middle; 
+    text-align: center;
+}
