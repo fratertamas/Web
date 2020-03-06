@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "/_Layout.cshtml";
+    var db = Database.Open("Hirfal");
+    var bejegyzesek = db.Query("SELECT * FROM Hirek ORDER BY Azonosito DESC");
+}
+<h2>Hírek:</h2>
+<h1>&nbsp;</h1>
+@foreach( var news in bejegyzesek){
+    <h3>@news.Cim</h3>
+    <p><a href="@Href("hir", news.Azonosito)"><input type="button" value="Tovább" /></a></p>
+    @*<p>@news.hir (@news.Nev)</p>*@
+}
+@if (WebSecurity.CurrentUserName == "Admin" ||WebSecurity.CurrentUserName == "Fantasztikum"){
+    <hr />
+    <p style="text-align: center">Adminisztrátorként erre a gombra kattintva vihetsz fel új hírt az oldalra: <br />
+        <a href="/ujhir.cshtml"><input type="button" value="Új hír" /></a>
+    </p>
+}
+
+@section login{
+    <div id="login">
+         @if(WebSecurity.IsAuthenticated){
+                        <p>Hello, @WebSecurity.CurrentUserName!</p>
+                        <p>Be vagy lépve!</p>
+                        <a href="/Logout.cshtml"><input type="button" value="Kilépés" /></a>
+                    }else{
+    <form method="post" action="">
+        <a href="/Login.cshtml"><input type="button" value="Belépés" /></a> <br />
+        <a href="/Register.cshtml"><input type="button" value="Regisztráció" /></a>
+        <br />
+    </form>}
+    </div>
+}

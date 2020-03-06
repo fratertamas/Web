@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "/_Layout.cshtml";
+}
+<table style="width: 100%">    <tbody>    <tr>
+        <td>            <h2>Elérhetőségek:</h2>
+            <p><strong><br /></strong></p>
+            <p><strong>Vezető:</strong> Fráter Sándor:<em> ének-zene, népzenetanár</em></p>
+            <p><strong>Email:</strong> fratersand@freemail.hu</p>
+            <p><strong>Próbák időpontja:</strong> Szombat 18:00</p>
+            <p><strong>Helysz&iacute;n:</strong> Mándok, Művelődési ház, 1. emelet</p>
+        </td>    </tr>    <tr>
+        <td>
+        <p style="text-align: center;"><strong>Térkép:</strong></p>
+        <p style="text-align: center;"><iframe style="width: 325px; height:250px" src="https://maps.google.hu/maps?f=q&amp;source=s_q&amp;hl=hu&amp;geocode=&amp;q=M%C3%A1ndok,+Pet%C5%91fi+S%C3%A1ndor+utca&amp;aq=0&amp;oq=M%C3%A1ndok+pet&amp;sll=48.322588,22.191138&amp;sspn=0.01618,0.042272&amp;ie=UTF8&amp;hq=&amp;hnear=4644+M%C3%A1ndok,+Pet%C5%91fi+S%C3%A1ndor+utca&amp;ll=48.322536,22.185754&amp;spn=0.032362,0.084543&amp;t=m&amp;z=14&amp;output=embed"></iframe></p>
+        <p style="text-align: center;"><small><a target="_blank" href="https://maps.google.hu/maps?f=q&amp;source=embed&amp;hl=hu&amp;geocode=&amp;q=M%C3%A1ndok,+Pet%C5%91fi+S%C3%A1ndor+utca&amp;aq=0&amp;oq=M%C3%A1ndok+pet&amp;sll=48.322588,22.191138&amp;sspn=0.01618,0.042272&amp;ie=UTF8&amp;hq=&amp;hnear=4644+M%C3%A1ndok,+Pet%C5%91fi+S%C3%A1ndor+utca&amp;ll=48.322536,22.185754&amp;spn=0.032362,0.084543&amp;t=m&amp;z=14" style="color: #0000ff; text-align: center;">Nagyobb t&eacute;rk&eacute;pre v&aacute;lt&aacute;s</a></small></p>
+        </td>
+    </tr>    </tbody></table>
+
+@section login{
+    <div id="login">
+         @if(WebSecurity.IsAuthenticated){
+                        <p>Hello, @WebSecurity.CurrentUserName!</p>
+                        <p>Be vagy lépve!</p>
+                        <a href="/Logout.cshtml"><input type="button" value="Kilépés" /></a>
+                    }else{
+    <form method="post" action="">
+        <a href="/Login.cshtml"><input type="button" value="Belépés" /></a> <br />
+        <a href="/Register.cshtml"><input type="button" value="Regisztráció" /></a>
+        <br />
+    </form>}
+    </div>
+}

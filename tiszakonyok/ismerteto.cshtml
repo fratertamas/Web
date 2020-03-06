@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "/_Layout.cshtml";
+}
+<h2>Ismertető:</h2>
+ <p>A Tiszakönyök citerazenekar 1993-ban alakult azzal a céllal, hogy a mándoki gyerekeknek legyen lehetőségük, alkalmuk az iskolai tanórákon kívül is találkozni a népzenével, népi kultúrával, népszokásokkal.</p>
+
+<p>A megalakulás óta eltelt évek azt igazolják, hogy ilyen és ehhez hasonló kezdeményezésre van igény településünkön, hiszen több mint száz gyerek (és néhány felnőtt) fordult meg a foglalkozásokon, ismerkedett meg kezdő vagy haladó szinten a népi hangszerekkel és a magyar népdalokkal. Jelenleg pedig 3 utánpótlás csapat is működik.</p>
+
+<p>A Tiszakönyök citerazenekar rendszeres résztvevője a mándoki kulturális rendezvényeken és a megyei népzenei fesztiválokon, valamint a Vass Lajos országos népzenei versenynek, ahol több ezüst és arany fokozatott ért el. Ezenkívül igyekszik eleget tenni a környező települések felkéréseinek is. Nemzetközi szinten egyenlőre csak Szlovákiában jártunk. Igaz, ott többször is.</p>
+
+<p><strong>Vezető:</strong> Fráter Sándor: <em>ének-zene, népzenetanár</em></p>
+
+@section login{
+    <div id="login">
+         @if(WebSecurity.IsAuthenticated){
+                        <p>Hello, @WebSecurity.CurrentUserName!</p>
+                        <p>Be vagy lépve!</p>
+                        <a href="/Logout.cshtml"><input type="button" value="Kilépés" /></a>
+                    }else{
+    <form method="post" action="">
+        <a href="/Login.cshtml"><input type="button" value="Belépés" /></a> <br />
+        <a href="/Register.cshtml"><input type="button" value="Regisztráció" /></a>
+        <br />
+    </form>}
+    </div>
+}

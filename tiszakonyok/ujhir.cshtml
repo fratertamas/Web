@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "/_Layout.cshtml";
+
+    if(IsPost){
+        var nev = Request["nev"];
+        var cim = Request["cim"];
+        var hir = Request["hir"];
+
+        var db = Database.Open("Hirfal");
+        db.Execute("INSERT INTO Hirek(Nev, Cim, hir) VALUES (@0, @1, @2)", nev, cim, hir);
+
+        Response.Redirect("/hirek.cshtml");
+
+    }
+}
+<h2>Új hír felvitele:</h2>
+ @if (WebSecurity.CurrentUserName == "Admin" || WebSecurity.CurrentUserName == "Fantasztikum"){
+<form method="post">
+    <table>
+        <tr>
+            <td><label for="nev">Szerző:</label></td>
+            <td><input type="text" id="nev" name="nev" value="@WebSecurity.CurrentUserName" /></td>
+        </tr>
+        <tr>
+            <td><label for="cim">Hír címe:</label></td>
+            <td><input type="text" id="cim" name="cim" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="hir">Hír szövege:</label></td>
+            <td><input type="text" id="hir" name="hir" value="" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center"><input type="submit" value="Feltöltés" /></td>
+        </tr>
+    </table>
+
+</form>
+}else{
+    <h3 style="color: #f00">Ennek az oldalnak a tartalmát csak az Adminisztrátor láthatja!</h3>
+}
+@section login{
+    <div id="login">
+         @if(WebSecurity.IsAuthenticated){
+                        <p>Hello, @WebSecurity.CurrentUserName!</p>
+                        <p>Be vagy lépve!</p>
+                        <a href="/Logout.cshtml"><input type="button" value="Kilépés" /></a>
+                    }else{
+    <form method="post" action="">
+        <a href="/Login.cshtml"><input type="button" value="Belépés" /></a> <br />
+        <a href="/Register.cshtml"><input type="button" value="Regisztráció" /></a>
+        <br />
+    </form>}
+    </div>
+}

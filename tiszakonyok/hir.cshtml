@@ -1,0 +1,32 @@
+﻿@{
+    var db = Database.Open("Hirfal");
+    var hirdb = db.QuerySingle("SELECT * FROM Hirek WHERE Azonosito=@0", UrlData[0]);
+
+
+}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body style="background-color: #008080">
+        <h2 style="color: #00ff21">@hirdb.Cim</h2>
+        <p style="color: #f7f941">@hirdb.hir</p>
+        <p style="color: #fff">(@hirdb.Nev)</p>
+        <table>
+            <tr>
+                <th style="color: #f7f941">Facebook Like</th>
+                <th style="color: #f7f941">Twitter</th>
+            </tr>
+            <tr>
+                <td><p>@Facebook.LikeButton()</p></td>
+                <td>@Twitter.TweetButton(tweetText: hirdb.Cim)</td>
+            </tr>
+        </table>
+        <p><a href="/hirek.cshtml"><input type="button" value="Vissza" /></a></p>
+    </body>
+</html>
+
+

@@ -1,0 +1,59 @@
+﻿@{
+  Layout = "~/_Layout.cshtml";
+  // Változók deklarálása
+var username = "";
+var password = "";
+var ErrorMessage = "";
+
+// IsPost esetén adatok validálása
+if (IsPost)
+{
+username = Request.Form["username"];
+password = Request.Form["password"];
+if (username.IsEmpty() || password.IsEmpty())
+{
+ErrorMessage = "Meg kell adnod egy felhasználónevet és egy hozzá tartozó jelszót!";
+} 
+else
+{
+// A főoldalra visszairányítás rossz login.
+if (WebSecurity.Login(username, password, false))
+{Response.Redirect("~/");}
+else
+{ErrorMessage = "Belépés sikertelen";}
+}
+}
+}
+
+<div id="tartalom">
+@if (ErrorMessage!="") {
+<p>@ErrorMessage</p> 
+<p>Kérünk javítsa a hibákat és próbálkozzon újra!</p>
+}
+
+
+<form method="post" action="">
+<fieldset>
+<legend>Belépés</legend>
+    <table>
+        <tr>
+            <td><label>Felhasználónév:</label></td>
+            <td><input type="text" id="username" name="username" /></td>
+        </tr>
+        <tr>
+            <td><label>Jelszó:</label></td>
+            <td><input type="password" id="password" name="password" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center"><input type="submit" value="Belépés" /></td>
+        </tr>
+    </table>
+</fieldset>
+</form>
+</div>
+
+@section login{
+<div id="login">
+    Belépés folyamatban...
+    </div>
+}

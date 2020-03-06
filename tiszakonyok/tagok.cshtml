@@ -1,0 +1,42 @@
+﻿@{
+    Layout="/_Layout.cshtml";
+}
+<h2>Tagok</h2>
+@if(!WebSecurity.IsAuthenticated){
+    <p><strong>A csapattagok névsorát csak bejelentkezett felhasználók láthatják!</strong></p>
+
+}else{
+    <ol>
+        <li>Fráter Sándor</li>
+        <li>Ifj. Fráter Sándor</li>
+        <li>Fráter Tamás</li>
+        <li>Fráter Zoltán</li>
+        <li>Fráter Richárd</li>
+        <li>Katkó Sándor</li>
+        <li>Molnár Gergő</li>
+        <li>Makai Zoltán Gergő</li>
+        <li>Czap István</li>
+        <li>Dévai Tibor</li>
+        <li>Sajtos Lajos</li>
+        <li>Gonda Éva</li>
+        <li>Albert Krisztina</li>
+        <li>Albert Ágnes</li>
+        <li>Jámbrik Mária</li>
+        <li>Jámbrik Zsuzsanna</li>
+        <li>Aros Lilla Kitti</li>
+    </ol>
+}
+@section login{
+    <div id="login">
+         @if(WebSecurity.IsAuthenticated){
+                        <p>Hello, @WebSecurity.CurrentUserName!</p>
+                        <p>Be vagy lépve!</p>
+                        <a href="/Logout.cshtml"><input type="button" value="Kilépés" /></a>
+                    }else{
+    <form method="post" action="">
+        <a href="/Login.cshtml"><input type="button" value="Belépés" /></a> <br />
+        <a href="/Register.cshtml"><input type="button" value="Regisztráció" /></a>
+        <br />
+    </form>}
+    </div>
+}

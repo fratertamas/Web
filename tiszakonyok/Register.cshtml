@@ -1,0 +1,78 @@
+﻿@{
+  Layout = "~/_Layout.cshtml";
+  // változók inicializálása
+var email = "";
+var password = "";
+var confirmPassword = "";
+var ErrorMessage = "";
+
+// Ha IsPost van és az adatok rendben
+if (IsPost)
+{
+email = Request.Form["email"];
+password = Request.Form["password"];
+confirmPassword = Request.Form["confirmPassword"];
+
+if (email.IsEmpty() || password.IsEmpty()) {
+ErrorMessage = "A felhasználónevet és a jelszót meg kell adni!";}
+
+if (password != confirmPassword) {
+ErrorMessage = "A Jelszó és a megerősített jelszó nem egyezik meg!.";}
+
+// Ha minden adat jó, akkor az account létrehozása
+if (ErrorMessage=="")
+{ 
+var db = Database.Open("Users");
+var user = db.QuerySingle("SELECT Email FROM UserProfile WHERE LOWER(Email) = LOWER(@0)", email);
+if (user == null)
+{
+db.Execute("INSERT INTO UserProfile (Email) VALUES (@0)", email);
+WebSecurity.CreateAccount(email, password, false);
+
+// Főoldalra visszaírányitás és hibakezelés
+Response.Redirect("~/");
+} 
+else {ErrorMessage = "Ez a felhasználónév már foglalt";}
+}
+}
+}
+
+<div id="tartalom">
+
+@if (ErrorMessage!="")
+{
+<p>@ErrorMessage</p> 
+<p>Kérünk javítsd ki a hibát és próbáld újra!</p>
+}
+
+
+<form method="post" action="">
+<fieldset>
+<legend>Regisztráció</legend>
+<table>
+<tr>
+    <td><label>Felhasználónév:</label></td>
+    <td><input type="text" id="email" name="email" /></td>
+</tr>
+    <tr>
+    <td><label>Jelszó:</label></td>
+    <td><input type="password" id="password" name="password" /></td>
+</tr>
+    <tr>
+    <td><label>Jelszó megerősítése:</label></td>
+    <td><input type="password" id="confirmPassword" name="confirmPassword" /></td>
+</tr>
+    <tr>
+    <td colspan="2" style="text-align: center"><p><input type="submit" value="Regisztráció" /></p></td>
+</tr>
+</table>
+</fieldset>
+</form>
+    </div>
+
+
+@section login{
+<div id="login">
+    Regisztráció folyamatban...
+    </div>
+}

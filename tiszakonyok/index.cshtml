@@ -1,0 +1,22 @@
+﻿@{
+     Layout = "/_Layout.cshtml";
+}
+
+<h2>Üdvözöljük honlapunkon!</h2>
+ <p>Ez a honlap a Mándokon hosszú évek óta működő Tiszakönyök citerazenekart mutatja be. A csapat célja, hogy a népzenei hagyományainkat megőrizze, tovább vigye és az emberekkel megismertesse.</p>
+		        <div>                    <table style="border: 5px solid gray; clear: both; margin-right: auto; margin-left: auto">                        <tr>                            <td>                                <img src="/images/image3.jpg" style="border: 1 solid gray" height="262" width="350" alt="kep" />                            </td>                        </tr>                    </table>                </div>
+
+@section login{
+    <div id="login">
+    @if(WebSecurity.IsAuthenticated){
+                        <p>Hello, @WebSecurity.CurrentUserName!</p>
+                        <p>Be vagy lépve!</p>
+                        <a href="/Logout.cshtml"><input type="button" value="Kilépés" /></a>
+                    }else{
+    <form method="post" action="">
+        <a href="/Login.cshtml"><input type="button" value="Belépés" /></a> <br />
+        <a href="/Register.cshtml"><input type="button" value="Regisztráció" /></a>
+        <br />
+    </form>}
+        </div>
+}

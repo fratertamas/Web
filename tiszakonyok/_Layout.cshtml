@@ -1,0 +1,53 @@
+﻿@{
+    
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Tiszakönyök Citerazenekar</title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="icon" href="images/favico.jpg" type="image/jpg" />
+
+    </head>
+    <body>
+        <div id="hatter">
+            <div id="fejlec"></div>
+            <div id="bal">
+                <!-- TODO: Ezt fajlbol kellene -->
+                <div id="navigacio">
+                <ul>
+                    <li><a href="/index.cshtml">Kezdőlap</a></li>
+                    <li><a href="/ismerteto.cshtml">Ismertető</a></li>
+                    <li><a href="/hirek.cshtml">Hírek</a></li>
+                    <li><a href="/tagok.cshtml">Tagok</a></li>
+                    <li><a href="/kapcsolat.cshtml">Kapcsolat</a></li>
+                </ul>
+                </div>
+                <div id="login">
+                    <hr />
+                    @Bing.SearchBox( boxWidth:"240")
+                    <hr />
+                    
+                        @RenderSection("login")
+                    
+                
+                    
+                </div>
+            </div>
+            <div id="jobb">
+              <div id="tartalom">
+		        @RenderBody()
+                </div>
+             </div>
+            <div class="clear"> </div>
+            <div id="spacer"> </div>
+            <div id="lablec">
+                 <h3>&copy; @DateTime.Now.Year</h3>
+	        <div id="lablec_vonal"></div>
+            </div>
+        </div>
+    </body>
+</html>
